@@ -1,6 +1,6 @@
 from django.db import models
 
-from django.db import models
+from rbac.models import User
 
 import datetime
 
@@ -13,8 +13,8 @@ def get_img_path(instance, filename):
 
 
 class WeChatTask(models.Model):
-    # user = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE, verbose_name="用户",
-    #                          related_name="wechattask_user")
+    user = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE, verbose_name="用户",
+                             related_name="wechattask_user")
     input_time = models.DateTimeField(verbose_name='录入时间', auto_now_add=True)
     submit_time = models.DateTimeField(verbose_name='提交时间', null=True, blank=True)
     pass_time = models.DateTimeField(verbose_name='通过时间', null=True, blank=True)
